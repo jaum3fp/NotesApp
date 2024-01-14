@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container-fluid">
+
+    <header class="d-flex flex-wrap justify-content-center">
+        {% if context == 'public_notes' %}
+            <h1 class="text-center m-3">Notas publicadas</h1>
+        {% else %}
+            <h1 class="text-center m-3">Tus notas preferidas</h1>
+        {% endif %}
+    </header>
+
+    <div class="d-flex flex-wrap justify-content-center">
+        {% for note in notes %}
+                <div class="card m-5">
+                    <div class="card-header d-flex flex-wrap">
+                        <input disabled type="text" style="background-color: transparent;" class="form-control border-0" value={{ note.title }}>
+                        <input disabled type="text" style="background-color: transparent;" class="form-control border-0"  value="{% if context == 'public_notes' %}De: {{ note.notes_group.user.username }}{% else %}Grupo: {{ note.notes_group.title }}{% endif %}">
+                    </div>
+                    <div class="card-body">
+                        <textarea disabled style="background-color: transparent;resize: none" cols="auto" rows="6" class="form-control border-0">{{ note.content }}</textarea>
+                    </div>
+                    <div class="card-footer text-muted">{{ note.date }}</div>
+                    
+                </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

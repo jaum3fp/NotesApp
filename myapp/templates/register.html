@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container py-5">
+    <div class="row py-lg-5">
+        <form action={% url 'register' %} method="post" class="col-lg-6 col-md-8 mx-auto">
+
+            {% csrf_token %}
+        
+            <div class="mb-3 form-floating">
+                <input type="text" class="form-control" id="username_input" name="username">
+                <label for="username_input">Nombre de usuario</label>
+            </div>
+            <div class="mb-3 form-floating">
+                <input type="text" class="form-control" id="firstname_input" name="firstname">
+                <label for="firstname_input">Tu nombre</label>
+            </div>
+            <div class="mb-3 form-floating">
+                <input type="text" class="form-control" id="surname_input" name="surname">
+                <label for="surname_input">Apellidos</label>
+            </div>
+            <div class="mb-3 form-floating">
+                <input type="email" class="form-control" id="email_input" name="email">
+                <label for="email_input">Email</label>
+
+            </div>
+            <div class="mb-3 form-floating">
+                <input type="password" class="form-control" id="password_input" name="password">
+                <label for="password_input">Contraseña</label>
+            </div>
+            <div class="mb-3 form-floating">
+                <input type="password" class="form-control" id="password_re_input" name="password_re">
+                <label for="password_re_input">Repetir contraseña</label>
+            </div>
+        
+            <button type="submit" class="btn btn-outline-primary form-control">Registrarse</button>
+
+            {% if error %}
+                <p class="text-danger">{{ error }}</p>
+            {% endif %}
+        
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

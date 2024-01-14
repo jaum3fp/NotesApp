@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Notes app</h1>
+            <p class="lead text-body-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis minima reiciendis iste illo doloribus debitis possimus placeat. Porro aperiam voluptate id architecto molestiae repudiandae vero, deleniti reprehenderit fugiat accusantium qui adipisci rem quis cumque voluptatibus magnam natus, enim maiores cupiditate ducimus! Omnis a iure ipsum natus accusantium culpa atque maiores.</p>
+            {% if not user.is_authenticated %}
+            <p>
+                <a href={% url 'login' %} class="btn btn-primary my-2 me-4">Iniciar sesión</a>
+                <a href={% url 'register' %} class="btn btn-secondary my-2">Registarse</a>
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
